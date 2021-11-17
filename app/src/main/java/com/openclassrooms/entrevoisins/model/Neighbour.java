@@ -1,5 +1,7 @@
 package com.openclassrooms.entrevoisins.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -25,7 +27,7 @@ public class Neighbour {
     /** About me */
     private String aboutMe;
 
-    /** favorite */
+    /** Favorite */
     private boolean favorite;
 
     /**

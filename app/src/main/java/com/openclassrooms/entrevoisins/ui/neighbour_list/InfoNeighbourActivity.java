@@ -21,6 +21,8 @@ import com.bumptech.glide.Glide;
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 
+import java.text.Normalizer;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -64,6 +66,7 @@ public class InfoNeighbourActivity extends AppCompatActivity {
         mTextView_address.setText(neighbour.getAddress());
         mTextView_phone.setText(neighbour.getPhoneNumber());
         mTextView_about_me.setText(neighbour.getAboutMe());
+        mTextView_social.setText(getFacebookLink(stripAccents(neighbour.getName().toLowerCase())));
         init();
     }
 
@@ -89,7 +92,15 @@ public class InfoNeighbourActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public String stripAccents(String s) {
+        s = Normalizer.normalize(s, Normalizer.Form.NFD);
+        s = s.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+        return s;
+    }
 
+    public String getFacebookLink (String s) {
+        return ("www.facebook.fr/" + s);
+    }
 
     public String biggerAvatar(String avatarUrl) {
         return avatarUrl.replace("150?","400?");

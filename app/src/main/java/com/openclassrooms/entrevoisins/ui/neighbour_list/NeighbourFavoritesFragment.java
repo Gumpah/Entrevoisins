@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.di.DI;
-import com.openclassrooms.entrevoisins.events.DeleteNeighbourEvent;
 import com.openclassrooms.entrevoisins.events.RemoveFavoriteNeighbourEvent;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
@@ -32,7 +31,7 @@ public class NeighbourFavoritesFragment extends Fragment {
 
     private NeighbourApiService mApiService;
     private List<Neighbour> mNeighbours;
-    private List<Neighbour> mFavoriteNeighbours = new ArrayList<>();;
+    private List<Neighbour> mFavoriteNeighbours = new ArrayList<>();
     private RecyclerView mRecyclerView;
 
 
@@ -67,16 +66,11 @@ public class NeighbourFavoritesFragment extends Fragment {
      */
     private void initList() {
         mNeighbours = mApiService.getNeighbours();
-        getFavorites();
+        mFavoriteNeighbours = new ArrayList<>();
+        mFavoriteNeighbours = mApiService.getFavorites();
         mRecyclerView.setAdapter(new MyNeighbourFavoritesRecyclerViewAdapter(mFavoriteNeighbours, getActivity()));
     }
 
-    private void getFavorites() {
-        mFavoriteNeighbours = new ArrayList<>();
-        for (int i=0; i < mNeighbours.size(); i++) {
-            if (mNeighbours.get(i).getFavorite()) { mFavoriteNeighbours.add(mNeighbours.get(i)); }
-        }
-    }
 
     @Override
     public void onResume() {
