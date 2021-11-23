@@ -29,11 +29,12 @@ public class MyNeighbourFavoritesRecyclerViewAdapter extends RecyclerView.Adapte
 
     private final List<Neighbour> mNeighbours;
     private final Context mContext;
+    private final NeighbourClickListener listener;
 
-    public MyNeighbourFavoritesRecyclerViewAdapter(List<Neighbour> items, Context context) {
+    public MyNeighbourFavoritesRecyclerViewAdapter(List<Neighbour> items, Context context, NeighbourClickListener clickListener) {
         mNeighbours = items;
         mContext = context;
-
+        listener = clickListener;
     }
 
     @Override
@@ -52,19 +53,11 @@ public class MyNeighbourFavoritesRecyclerViewAdapter extends RecyclerView.Adapte
                 .apply(RequestOptions.circleCropTransform())
                 .into(holder.mNeighbourAvatar);
         holder.mFavoriteButton.setSelected(neighbour.getFavorite());
-        holder.mConstraintLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                InfoNeighbourActivity.navigate(mContext, neighbour);
-            }
-        });
-        holder.mFavoriteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                neighbour.setFavorite(!neighbour.getFavorite());
-                holder.mFavoriteButton.setSelected(neighbour.getFavorite());
-                EventBus.getDefault().post(new RemoveFavoriteNeighbourEvent(neighbour));
-            }
+        holder.mConstraintLayout.setOnClickListener(view -> listener.navigateToNeighbourInfo(neighbour));
+        holder.mFavoriteButton.setOnClickListener(view -> {
+            neighbour.setFavorite(!neighbour.getFavorite());
+            holder.mFavoriteButton.setSelected(neighbour.getFavorite());
+            EventBus.getDefault().post(new RemoveFavoriteNeighbourEvent(neighbour));
         });
     }
 

@@ -30,9 +30,12 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
     private final List<Neighbour> mNeighbours;
     private final Context mContext;
 
-    public MyNeighbourRecyclerViewAdapter(List<Neighbour> items, Context context) {
+    private final NeighbourClickListener listener;
+
+    public MyNeighbourRecyclerViewAdapter(List<Neighbour> items, Context context, NeighbourClickListener clickListener) {
         mNeighbours = items;
         mContext = context;
+        listener = clickListener;
 
     }
 
@@ -52,19 +55,11 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
                 .apply(RequestOptions.circleCropTransform())
                 .into(holder.mNeighbourAvatar);
 
-        holder.mDeleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EventBus.getDefault().post(new DeleteNeighbourEvent(neighbour));
-                EventBus.getDefault().post(new RemoveFavoriteNeighbourEvent(neighbour));
-            }
+        holder.mDeleteButton.setOnClickListener(v -> {
+            EventBus.getDefault().post(new DeleteNeighbourEvent(neighbour));
+            EventBus.getDefault().post(new RemoveFavoriteNeighbourEvent(neighbour));
         });
-        holder.mConstraintLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                InfoNeighbourActivity.navigate(mContext, neighbour);
-            }
-        });
+        holder.mConstraintLayout.setOnClickListener(view -> listener.navigateToNeighbourInfo(neighbour));
     }
 
     @Override

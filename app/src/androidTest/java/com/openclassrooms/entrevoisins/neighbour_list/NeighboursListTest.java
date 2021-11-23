@@ -116,6 +116,6 @@ public class NeighboursListTest {
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0, new InfoViewAction()));
         onView(withId(R.id.favorite_floating_button)).perform(click());
         pressBack();
-        onView(ViewMatchers.withId(R.id.favorites_list_neighbours)).check(matches(hasChildCount(0)));
+        onView(ViewMatchers.withId(R.id.favorites_list_neighbours)).check(matches(hasChildCount(1)));
     }
 }

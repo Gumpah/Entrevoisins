@@ -1,6 +1,7 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
@@ -27,7 +28,7 @@ import java.util.List;
  * Use the {@link NeighbourFavoritesFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NeighbourFavoritesFragment extends Fragment {
+public class NeighbourFavoritesFragment extends Fragment implements NeighbourClickListener {
 
     private NeighbourApiService mApiService;
     private List<Neighbour> mNeighbours;
@@ -68,7 +69,7 @@ public class NeighbourFavoritesFragment extends Fragment {
         mNeighbours = mApiService.getNeighbours();
         mFavoriteNeighbours = new ArrayList<>();
         mFavoriteNeighbours = mApiService.getFavorites();
-        mRecyclerView.setAdapter(new MyNeighbourFavoritesRecyclerViewAdapter(mFavoriteNeighbours, getActivity()));
+        mRecyclerView.setAdapter(new MyNeighbourFavoritesRecyclerViewAdapter(mFavoriteNeighbours, getActivity(), this));
     }
 
 
@@ -99,5 +100,12 @@ public class NeighbourFavoritesFragment extends Fragment {
     @Subscribe
     public void onRemoveFavoriteNeighbour(RemoveFavoriteNeighbourEvent event) {
         initList();
+    }
+
+    @Override
+    public void navigateToNeighbourInfo(Neighbour neighbour) {
+        Intent intent = new Intent(getActivity(), InfoNeighbourActivity.class);
+        intent.putExtra(InfoNeighbourActivity.BUNDLE_NEIGHBOUR, neighbour.getId());
+        startActivity(intent);
     }
 }

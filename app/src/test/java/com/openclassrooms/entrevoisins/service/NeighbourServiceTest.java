@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
@@ -47,11 +48,28 @@ public class NeighbourServiceTest {
     }
 
     @Test
+    public void getNeighbourByIdWithSuccess() {
+        Neighbour neighbourExpected = service.getNeighbours().get(0);
+        long id = neighbourExpected.getId();
+        Neighbour neighbourActual = service.getNeighbour(id);
+        assertEquals(neighbourExpected, neighbourActual);
+    }
+
+    @Test
     public void setFavoriteNeighbourWithSuccess() {
         Neighbour neighbourToSetFavorite = service.getNeighbours().get(0);
         neighbourToSetFavorite.setFavorite(true);
         assertTrue(neighbourToSetFavorite.getFavorite());
         neighbourToSetFavorite.setFavorite(false);
+        assertFalse(neighbourToSetFavorite.getFavorite());
+    }
+
+    @Test
+    public void setFavoriteNeighbourByIdWithSuccess() {
+        Neighbour neighbourToSetFavorite = service.getNeighbours().get(0);
+        service.setFavoriteById(neighbourToSetFavorite.getId(), true);
+        assertTrue(neighbourToSetFavorite.getFavorite());
+        service.setFavoriteById(neighbourToSetFavorite.getId(), false);
         assertFalse(neighbourToSetFavorite.getFavorite());
     }
 

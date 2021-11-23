@@ -47,4 +47,26 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
         }
         return FavoriteNeighbours;
     }
+
+    @Override
+    public Neighbour getNeighbour(long id) {
+        Neighbour neighbour = null;
+        for (int i = 0; i < neighbours.size(); i++) {
+            if (neighbours.get(i).getId() == id) {
+                neighbour = neighbours.get(i);
+                break;
+            }
+        }
+        return neighbour;
+    }
+
+    @Override
+    public void setFavoriteById(long id, boolean favorite) {
+        for (int i = 0; i < neighbours.size(); i++) {
+            if (neighbours.get(i).getId() == id) {
+                neighbours.get(i).setFavorite(favorite);
+                break;
+            }
+        }
+    }
 }

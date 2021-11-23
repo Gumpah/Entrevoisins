@@ -34,5 +34,12 @@ public interface NeighbourApiService {
      */
     List<Neighbour> getFavorites();
 
+    /**
+     * Get a neighbour by his id
+     * @param id
+     */
+    Neighbour getNeighbour(long id);
+
+    void setFavoriteById(long id, boolean favorite);
 
 }

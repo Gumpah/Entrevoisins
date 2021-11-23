@@ -19,7 +19,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.openclassrooms.entrevoisins.R;
+import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
+import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 
 import java.text.Normalizer;
 
@@ -28,8 +30,10 @@ import butterknife.ButterKnife;
 
 public class InfoNeighbourActivity extends AppCompatActivity {
 
+    private NeighbourApiService mApiService;
     public static final String BUNDLE_NEIGHBOUR = "BUNDLE_NEIGHBOUR";
-    public static Neighbour neighbour;
+    long neighbour_id;
+    Neighbour neighbour;
 
     @BindView(R.id.collapsing_toolbar)
     CollapsingToolbarLayout mCollapsingToolbarLayout;
@@ -55,6 +59,10 @@ public class InfoNeighbourActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_neighbour);
         ButterKnife.bind(this);
+        mApiService = DI.getNeighbourApiService();
+        Intent intent = getIntent();
+        neighbour_id = intent.getLongExtra(BUNDLE_NEIGHBOUR, 0);
+        neighbour = mApiService.getNeighbour(neighbour_id);
         String avatarUrl = biggerAvatar(neighbour.getAvatarUrl());
         Glide.with(this).load(avatarUrl).into(mImageView_avatar);
         setSupportActionBar(mToolbar);
@@ -75,7 +83,7 @@ public class InfoNeighbourActivity extends AppCompatActivity {
         mFavoriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                neighbour.setFavorite(!neighbour.getFavorite());
+                mApiService.setFavoriteById(neighbour_id,!neighbour.getFavorite());
                 mFavoriteButton.setSelected(neighbour.getFavorite());
             }
         });
@@ -104,11 +112,5 @@ public class InfoNeighbourActivity extends AppCompatActivity {
 
     public String biggerAvatar(String avatarUrl) {
         return avatarUrl.replace("150?","400?");
-    }
-
-    public static void navigate(Context activity, Neighbour neigh) {
-        Intent intent = new Intent(activity, InfoNeighbourActivity.class);
-        ActivityCompat.startActivity(activity, intent, null);
-        neighbour = neigh;
     }
 }
