@@ -95,4 +95,5 @@ Vérifiez que c'est bien **app** qui est sélectionné dans le fenêtre de gauch
    ![emulator example 5](https://i.imgur.com/zM1wJ50.png) 
    
 </details>
+
 L'application se lance ensuite automatiquement sur le dispositif sélectionné.
