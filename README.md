@@ -38,10 +38,24 @@ Une fois revenu ici, copiez le lien du dépôt GitHub :
 
 ### Quatrième étape
 
-Ouvrez maintenant Android Studio. Sur la fenêtre d'accueil cliquez sur **Get from Version Control** <details> <summary>Voir l'image</summary> ![android studio download](https://i.imgur.com/d9RAlwo.png) </details>
-Vous devriez atterrir sur <details> <summary>cette fenêtre</summary> ![android studio download](https://i.imgur.com/q8mizQa.png) </details>
-1 - Collez le lien GitHub précédemment copié dans la case **URL**
-2 - Choisissez un dossier vide dans l'explorateur de fichier qui contiendra le projet
+Ouvrez maintenant Android Studio. Sur la fenêtre d'accueil cliquez sur **Get from Version Control** :
+<details> 
+    <summary>Voir l'image</summary> 
+
+   ![android studio download](https://i.imgur.com/d9RAlwo.png)
+   
+</details>
+
+Vous devriez atterrir sur cette fenêtre ;
+<details>
+    <summary>Voir l'image</summary>
+    
+   ![android studio download](https://i.imgur.com/q8mizQa.png) 
+   
+</details>
+
+1 - Collez le lien GitHub (précédemment copié) dans la case **URL**
+2 - Dans votre l'explorateur de fichiers, choisissez un dossier vide qui contiendra le projet
 
 ## 2
 
