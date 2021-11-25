@@ -60,9 +60,11 @@ public class InfoNeighbourActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info_neighbour);
         ButterKnife.bind(this);
         mApiService = DI.getNeighbourApiService();
+
         Intent intent = getIntent();
         neighbour_id = intent.getLongExtra(BUNDLE_NEIGHBOUR, 0);
         neighbour = mApiService.getNeighbour(neighbour_id);
+
         String avatarUrl = biggerAvatar(neighbour.getAvatarUrl());
         Glide.with(this).load(avatarUrl).into(mImageView_avatar);
         setSupportActionBar(mToolbar);
@@ -75,6 +77,7 @@ public class InfoNeighbourActivity extends AppCompatActivity {
         mTextView_phone.setText(neighbour.getPhoneNumber());
         mTextView_about_me.setText(neighbour.getAboutMe());
         mTextView_social.setText(getFacebookLink(stripAccents(neighbour.getName().toLowerCase())));
+
         init();
     }
 
