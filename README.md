@@ -62,7 +62,7 @@ Vous devriez atterrir sur cette fenêtre ;
 Et voilà, le projet est désormais sur votre ordinateur.
 
 
-## Lancez l'application
+## Lancer l'application
 
 Pour lancer l'application, vous avez deux possibilités. La lancer sur un émulateur directement sur votre ordinateur, ou la lancer sur un appareil physique en le branchant à votre ordinateur.
 
@@ -97,3 +97,22 @@ Vérifiez que c'est bien **app** qui est sélectionné dans le fenêtre de gauch
 </details>
 
 L'application se lance ensuite automatiquement sur le dispositif sélectionné.
+
+
+## Compiler l'application
+
+Pour compiler l'application, rendez-vous dans le menu **Build**, puis dans **Build Bundle(s) / APK(s)**
+<details>
+    <summary>Voir l'image</summary>
+    
+   ![emulator example 5](https://i.imgur.com/r3gbZIT.png) 
+   
+</details>
+
+Pour déployer l'application sur un appareil, sélectionnez **Build APK(s)**. Un pop-up apparaît ensuite en bas de votre écran, cliquez sur **locate** pour ouvrir le dossier qui contient l'APK.
+<details>
+    <summary>Voir l'image</summary>
+    
+   ![emulator example 5](https://i.imgur.com/nC6ikQv.png) 
+   
+</details>
