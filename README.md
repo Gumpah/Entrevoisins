@@ -28,9 +28,9 @@ Une fois revenu ici, copiez le lien du dépôt GitHub :
    
 </details>
 
-1 - Cliquez sur le bouton vert **Code**
-2 - S'il n'est pas séléctionné par défaut, séléctionnez l'onglet **HTTPS**
-3 - Cliquez sur l'icône à droite du lien afin de copier ce dernier
+1 - Cliquez sur le bouton vert **Code**  
+2 - S'il n'est pas séléctionné par défaut, séléctionnez l'onglet **HTTPS**  
+3 - Cliquez sur l'icône à droite du lien afin de copier ce dernier  
 
 
 ## 2
