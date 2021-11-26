@@ -1,3 +1,6 @@
+Test unitaire : [lien](http://htmlpreview.github.io/?https://github.com/Gumpah/Entrevoisins/blob/master/tests/P3_01_rapport_unitaire_final.html)
+Test instrumentalisé : [lien](http://htmlpreview.github.io/?https://github.com/Gumpah/Entrevoisins/blob/master/tests/P3_01_rapport_instru_final.html)
+
 # Bienvenue !
 
 Bienvenue sur le GitHub de l'application **Entrevoisins**. Vous trouverez ci-dessous toutes les instructions pour télécharger le code de l'application, la compiler, et la lancer sur un appareil.
