@@ -54,9 +54,9 @@ Vous devriez atterrir sur cette fenêtre ;
    
 </details>
 
-1 - Collez le lien GitHub (précédemment copié) dans la case **URL**
-2 - Dans votre l'explorateur de fichiers, choisissez un dossier vide qui contiendra le projet
-3 - Cliquez ensuite sur **Clone** pour valider
+1 - Collez le lien GitHub (précédemment copié) dans la case **URL**  
+2 - Dans votre l'explorateur de fichiers, choisissez un dossier vide qui contiendra le projet  
+3 - Cliquez ensuite sur **Clone** pour valider  
 
 
 Et voilà, le projet est désormais sur votre ordinateur.
